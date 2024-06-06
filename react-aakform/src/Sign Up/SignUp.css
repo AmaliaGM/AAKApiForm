@@ -1,0 +1,71 @@
+.wrapper {
+    margin: 5rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    position: relative;
+    border-radius: 20px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    margin: 2rem;
+    width: 80%;
+    height: 100%;
+  }
+  
+  .brand-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #000;
+    margin: 1rem;
+    text-align: center;
+  }
+  
+  .form-body {
+    margin: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    place-items: center;
+  }
+  
+  label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+    margin: 1rem;
+  }
+  
+  input[type="password"],
+  input[type="email"],
+  input[type="text"],
+  input[type="date"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type="submit"],
+  .btn {
+    width: 100%;
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }

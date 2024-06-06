@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 export const postSignUp = createAsyncThunk('signup', async (user) => {
     console.log(user)
     try {
-        const response = await fetch('https://django-dev.aakscience.com/signup', {
+        const response = await fetch('https://django-dev.aakscience.com/signup/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
