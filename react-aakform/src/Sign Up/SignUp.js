@@ -2,9 +2,8 @@
 /* eslint-disable camelcase */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { postSignUp } from '../../redux/reducer/registration';
-import "../../styles/signIn.css";
+import { BrowserRouter, Link, useNavigate } from 'react-router-dom';
+import { postSignUp } from '../redux/registration'
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -29,7 +28,6 @@ const SignUp = () => {
     navigate('/sign-in');
   };
   return (
-
     <div className="wrapper">
       <form className="container" onSubmit={handleSubmit}>
         <h1 className="brand-title">Sign Up</h1>
@@ -88,10 +86,6 @@ const SignUp = () => {
             
           </div>
           <input className="submit-login" type="submit" value="Sign Up" />
-
-          <div>
-            <Link className='register-link' to="/sign-in">Sign In</Link>
-          </div>
         </div>
       </form>
     </div>
