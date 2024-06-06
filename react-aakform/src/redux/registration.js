@@ -1,8 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const initialState = [];
-
-export const postSignUp = createAsyncThunk('users/signup', async (user) => {
+export const postSignUp = createAsyncThunk('signup_create', async (user) => {
   await fetch('https://django-dev.aakscience.com/signup', {
     method: 'POST',
     headers: {

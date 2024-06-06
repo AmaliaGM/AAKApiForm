@@ -7,13 +7,8 @@ function App() {
   <BrowserRouter>
     <div className="App">
         <div id='form'>
-          <form>
-            <div>
               <SignUpPage/>
-            </div>
-          </form>
         </div>
-       
     </div>
   </BrowserRouter>
   );
