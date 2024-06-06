@@ -2,15 +2,16 @@
 /* eslint-disable camelcase */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter, Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { postSignUp } from '../redux/registration'
 
 const SignUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [user_type, setUser_type] = useState('');
-  const [name, setName] = useState('');
-  const [last_name, setLast_name] = useState('');
+  const [user_type, setUsertype] = useState('');
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastname] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
 
@@ -18,17 +19,16 @@ const SignUp = () => {
     e.preventDefault();
     const user = {
       user_type,
-      name,
+      first_name,
       last_name,
+      username,
       email,
       password,
     };
-
     dispatch(postSignUp(user));
-    navigate('/sign-in');
+ //   navigate('/sign-in');
   };
   return (
-    <div className="wrapper">
       <form className="container" onSubmit={handleSubmit}>
         <h1 className="brand-title">Sign Up</h1>
         <div className='form-body'>
@@ -40,7 +40,7 @@ const SignUp = () => {
                 className="input-box"
                 value={user_type}
                 onChange={(e) => {
-                  setUser_type(e.target.value);
+                  setUsertype(e.target.value);
                 }}
               />
             <input
@@ -48,9 +48,9 @@ const SignUp = () => {
               type="text"
               name="name"
               className="input-box"
-              value={name}
+              value={first_name}
               onChange={(e) => {
-                setName(e.target.value);
+                setFirstName(e.target.value);
               }}
             />
             <input
@@ -60,7 +60,17 @@ const SignUp = () => {
               className="input-box"
               value={last_name}
               onChange={(e) => {
-                setLast_name(e.target.value);
+                setLastname(e.target.value);
+              }}
+            />
+             <input
+              placeholder="User Name"
+              type="text"
+              name="username"
+              className="input-box"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
               }}
             />
             <input
@@ -83,12 +93,10 @@ const SignUp = () => {
                 setpassword(e.target.value);
               }}
             />
-            
-          </div>
           <input className="submit-login" type="submit" value="Sign Up" />
+          </div>
         </div>
       </form>
-    </div>
   );
 }
 

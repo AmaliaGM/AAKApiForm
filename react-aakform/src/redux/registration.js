@@ -1,18 +1,54 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-export const postSignUp = createAsyncThunk('signup_create', async (user) => {
-  await fetch('https://django-dev.aakscience.com/signup', {
+export const postSignUp = createAsyncThunk('signup', async (user) => {
+    console.log(user)
+    try {
+        const response = await fetch('https://django-dev.aakscience.com/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ user }),
-  }).then((res) => {
-    if (res.ok) {
-      localStorage.setItem('token', res.headers.get('Authorization'));
-      // localStorage.setItem('user', JSON.stringify(user));
-      return res.json();
+    body: JSON.stringify(user),
+  })
+  console.log(response);
+    if (response.ok) {
+        const data = await response.json();
+        return data; 
     }
-    throw new Error(res);
-  });
+    } catch(e){
+        throw e;
+    }
+    
 });
+
+const SignUpUser = createSlice({
+    name: 'user',
+    initialState: {
+      user: {},
+      isloading: false,
+      hasErrors: false,
+    },
+    reducers: {
+    },
+    extraReducers: (builder) => {
+      builder
+        .addCase(postSignUp.pending, (state) => {
+          state.isloading = true;
+          state.hasErrors = false;
+    }
+    )
+    .addCase(postSignUp.fulfilled,
+        (state,action) => {
+            state.user = action.payload;
+            state.isloading = false;
+            state.hasErrors = false; 
+        }
+    )
+    .addCase(postSignUp.rejected, (state) => {
+        state.isloading = false;
+        state.hasErrors = true;
+    })
+  }
+})
+export const getResponse = (state) => state.user;
+export default SignUpUser.reducer;

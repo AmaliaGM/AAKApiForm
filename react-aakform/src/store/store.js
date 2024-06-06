@@ -1,9 +1,9 @@
 import {configureStore} from '@reduxjs/toolkit';
-import { postSignUp } from '../redux/registration';
+import SignUpUser from '../redux/registration';
 
 const store = configureStore({
     reducer: {
-        postSignUp
+        user: SignUpUser
     },
 });
 
