@@ -2,12 +2,10 @@
 /* eslint-disable camelcase */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { postSignUp } from '../redux/registration';
 import './SignUp.css';
 
 const SignUp = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [user_type, setUsertype] = useState('');
   const [first_name, setFirstName] = useState('');
@@ -27,7 +25,6 @@ const SignUp = () => {
       password,
     };
     dispatch(postSignUp(user));
- //   navigate('/sign-in');
   };
   return (
       <form className="container" onSubmit={handleSubmit}>
